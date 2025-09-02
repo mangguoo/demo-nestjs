@@ -8,6 +8,13 @@ export const enum ConfigEnum {
   // Database
   MYSQL_HOST = 'MYSQL_HOST',
   MYSQL_PORT = 'MYSQL_PORT',
+  MYSQL_USERNAME = 'MYSQL_USERNAME',
+  MYSQL_PASSWORD = 'MYSQL_PASSWORD',
+
+  // Redis
+  REDIS_HOST = 'REDIS_HOST',
+  REDIS_PORT = 'REDIS_PORT',
+  REDIS_PASSWORD = 'REDIS_PASSWORD',
 
   // Logs
   LOG_DIR = 'LOG_DIR',

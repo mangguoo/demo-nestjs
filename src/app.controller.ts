@@ -8,13 +8,13 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
+  getHello() {
     return this.appService.getHello();
   }
 
   @Get()
   @Version('2')
-  getHello2(): string {
+  getHello2() {
     return this.appService.getHello2();
   }
 }

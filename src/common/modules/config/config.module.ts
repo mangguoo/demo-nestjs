@@ -15,6 +15,12 @@ const validationSchema = Joi.object({
 
   [ConfigEnum.MYSQL_HOST]: Joi.string().ip().required(),
   [ConfigEnum.MYSQL_PORT]: Joi.number().default(3306),
+  [ConfigEnum.MYSQL_USERNAME]: Joi.string().required(),
+  [ConfigEnum.MYSQL_PASSWORD]: Joi.string().required(),
+
+  [ConfigEnum.REDIS_HOST]: Joi.string().ip().required(),
+  [ConfigEnum.REDIS_PORT]: Joi.number().default(6379),
+  [ConfigEnum.REDIS_PASSWORD]: Joi.string().required(),
 
   [ConfigEnum.LOG_DIR]: Joi.string().default('logs'),
   [ConfigEnum.LOG_DATE_FORMAT]: Joi.string().default('YYYY-MM-DD HH:mm:ss'),

@@ -1,0 +1,23 @@
+export const enum ConfigEnum {
+  // Server
+  PORT = 'PORT',
+  NODE_ENV = 'NODE_ENV',
+  PREFIX = 'PREFIX',
+  VERSION = 'VERSION',
+
+  // Database
+  MYSQL_HOST = 'MYSQL_HOST',
+  MYSQL_PORT = 'MYSQL_PORT',
+
+  // Logs
+  LOG_DIR = 'LOG_DIR',
+  LOG_DATE_FORMAT = 'LOG_DATE_FORMAT',
+  LOG_ZIPPED_ARCHIVE = 'LOG_ZIPPED_ARCHIVE',
+  LOG_MAX_SIZE = 'LOG_MAX_SIZE',
+  LOG_MAX_FILES = 'LOG_MAX_FILES',
+  LOG_ON = 'LOG_ON',
+
+  // Feature switches
+  ALL_EXCEPTION_FILTER = 'ALL_EXCEPTION_FILTER',
+  CORS = 'CORS',
+}

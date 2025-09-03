@@ -12,7 +12,7 @@ import { createKeyv } from '@keyv/redis';
         const redisUrl = `redis://:${configService.get(ConfigEnum.REDIS_PASSWORD)}@${configService.get(ConfigEnum.REDIS_HOST)}:${configService.get(ConfigEnum.REDIS_PORT)}`;
 
         return {
-          ttl: 10 * 1000,
+          ttl: 1000 * 1000,
           stores: [
             createKeyv(redisUrl, {
               namespace: 'app_cache',

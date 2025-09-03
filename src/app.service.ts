@@ -9,7 +9,7 @@ export class AppService {
   constructor(
     private readonly configService: ConfigService,
     private readonly logger: Logger,
-    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache
+    @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
   ) {}
 
   getHello(): string {
@@ -18,9 +18,10 @@ export class AppService {
   }
 
   async getHello2() {
-    // await this.cacheManager.set('token', 'ttt');
-    const token = await this.cacheManager.get('token');
-    this.logger.log(`Hello World! 2, ${token}`);
-    return `Hello World! 2 ${this.configService.get(ConfigEnum.PORT)}`;
+    await this.cacheManager.set('token', 'im so handsome');
+    console.log(this.cacheManager.stores);
+    const token = await this.cacheManager.get<string>('token');
+    this.logger.log(`Hello World! 2, token: ${token}`);
+    return `Hello World! 2, token: ${token}, port: ${this.configService.get(ConfigEnum.PORT)}`;
   }
 }

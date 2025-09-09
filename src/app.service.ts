@@ -18,9 +18,9 @@ export class AppService {
   }
 
   async getHello2() {
-    await this.cacheManager.set('token', 'ttt');
+    await this.cacheManager.set('token', 'im so handsome');
     const token = await this.cacheManager.get<string>('token');
-    this.logger.log(`Hello World! 2, ${token}`);
-    return `Hello World! 2 ${this.configService.get(ConfigEnum.PORT)}`;
+    this.logger.log(`Hello World! 2, token: ${token}`);
+    return `Hello World! 2, token: ${token}, port: ${this.configService.get(ConfigEnum.PORT)}`;
   }
 }

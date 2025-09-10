@@ -14,7 +14,12 @@ export class AppController {
 
   @Get()
   @Version('2')
-  getHello2() {
-    return this.appService.getHello2();
+  async getHello2() {
+    return await this.appService.getHello2();
+  }
+
+  @Get('send-email')
+  async sendEmail() {
+    return await this.appService.sendEmail();
   }
 }

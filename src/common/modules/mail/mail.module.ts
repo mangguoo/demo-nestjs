@@ -1,25 +1,30 @@
 import { Module } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
+import { ConfigEnum } from 'src/enum/config.enum';
+import * as path from 'path';
 
 @Module({
   imports: [
     MailerModule.forRootAsync({
-      useFactory: () => ({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
         transport: {
-          host: 'email-smtp.us-east-1.amazonaws.com', // SES SMTP endpoint
-          port: 465, // SSL
-          secure: true,
+          host: configService.get<string>(ConfigEnum.MAIL_HOST),
+          port: configService.get<number>(ConfigEnum.MAIL_PORT),
+          secure: configService.get<number>(ConfigEnum.MAIL_PORT) === 465, // Use SSL for port 465
           auth: {
-            user: process.env.SES_SMTP_USER,
-            pass: process.env.SES_SMTP_PASS,
+            user: configService.get<string>(ConfigEnum.MAIL_USERNAME),
+            pass: configService.get<string>(ConfigEnum.MAIL_PASSWORD),
           },
         },
+        // preview: true,
         defaults: {
-          from: '"MyApp" <verified-email@example.com>', // SES 已验证邮箱
+          from: `"${configService.get<string>(ConfigEnum.MAIL_FROM_NAME)}" <${configService.get<string>(ConfigEnum.MAIL_FROM_EMAIL)}>`,
         },
         template: {
-          dir: __dirname + '/templates/mails',
+          dir: path.join(__dirname, '../../..', 'templates', 'mails'),
           adapter: new HandlebarsAdapter(),
           options: {
             strict: true,

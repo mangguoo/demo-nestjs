@@ -31,6 +31,13 @@ const validationSchema = Joi.object({
 
   [ConfigEnum.ALL_EXCEPTION_FILTER]: Joi.boolean().default(false),
   [ConfigEnum.CORS]: Joi.boolean().default(false),
+
+  [ConfigEnum.MAIL_HOST]: Joi.string().required(),
+  [ConfigEnum.MAIL_PORT]: Joi.number().default(587),
+  [ConfigEnum.MAIL_USERNAME]: Joi.string().required(),
+  [ConfigEnum.MAIL_PASSWORD]: Joi.string().required(),
+  [ConfigEnum.MAIL_FROM_EMAIL]: Joi.string().required(),
+  [ConfigEnum.MAIL_FROM_NAME]: Joi.string().required(),
 });
 
 @Module({

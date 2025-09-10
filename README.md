@@ -31,6 +31,60 @@
 $ pnpm install
 ```
 
+## Environment Configuration
+
+Create a `.env` file in the root directory with the following configuration:
+
+```env
+# Server Configuration
+PORT=5500
+NODE_ENV=development
+PREFIX=api
+VERSION=1,2
+
+# Database Configuration (MySQL)
+MYSQL_HOST=127.0.0.1
+MYSQL_PORT=3306
+MYSQL_USERNAME=your_mysql_username
+MYSQL_PASSWORD=your_mysql_password
+
+# Redis Configuration
+REDIS_HOST=127.0.0.1
+REDIS_PORT=6379
+REDIS_PASSWORD=your_redis_password
+
+# Logging Configuration
+LOG_DIR=logs
+LOG_DATE_FORMAT=YYYY-MM-DD HH:mm:ss
+LOG_ZIPPED_ARCHIVE=true
+LOG_MAX_SIZE=5m
+LOG_MAX_FILES=1d
+LOG_ON=true
+
+# Feature Switches
+ALL_EXCEPTION_FILTER=true
+CORS=true
+
+# Mail Configuration
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=your_mail_username@gmail.com
+MAIL_PASSWORD=your_mail_password
+MAIL_FROM_EMAIL=your_mail_username@gmail.com
+MAIL_FROM_NAME=MyApp
+```
+
+### Mail Configuration Options
+
+The application supports multiple mail providers:
+
+- **Gmail**: Use `smtp.gmail.com` with port `587` (TLS) or `465` (SSL)
+- **Outlook**: Use `smtp-mail.outlook.com` with port `587`
+- **AWS SES**: Use regional endpoints like `email-smtp.us-east-1.amazonaws.com`
+- **Other SMTP providers**: Configure accordingly
+
+**Note**: For Gmail, you may need to use an App Password instead of your regular password.
+
 ## Compile and run the project
 
 ```bash
